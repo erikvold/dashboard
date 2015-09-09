@@ -30,4 +30,9 @@ module.exports = function (router) {
         res.render('server', model);
     });
 
+    router.get('/ss', function(req, res) {
+    	console.log('index:', req.url);
+        res.render(req.url, model);
+    });
+
 };

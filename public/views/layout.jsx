@@ -16,6 +16,8 @@
 'use strict';
 
 var React = require('react');
+var Navbar = require('./components/Navbar.jsx');
+var Sidebar = require('./components/Sidebar.jsx');
 
 module.exports = React.createClass({
 
@@ -25,14 +27,26 @@ module.exports = React.createClass({
             <html>
                 <head>
                     <meta charSet='utf-8' />
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <title>
-            {this.props.title}
+                        {this.props.title}
                     </title>
-                    <link href="../../style/com.css" rel="stylesheet" />
                     <link href="../../style/bootstrap.min.css" rel="stylesheet" />
+                    <link href="../../style/dashboard.css" rel="stylesheet" />
                 </head>
                 <body>
-          {this.props.children}
+
+                <Navbar />
+                <div className="container-fluid">
+                  <div className="row">
+                    
+                     <Sidebar />
+                     {this.props.children}
+
+                  </div>
+                </div>
+
                 </body>
                 <script src='/bundle.js'></script>
             </html>

@@ -19,10 +19,23 @@ var React = require('react');
 var Router = require('react-router');
 
 var App = require('../public/views/app.jsx');
-var Account = require('../public/views/account.jsx');
+var Main = require('../public/views/components/Main.jsx');
+var Users = require('../public/views/components/Users.jsx');
+var Prays = require('../public/views/components/Prays.jsx');
+var UserDetails = require('../public/views/components/UserDetails.jsx');
+var Feedback = require('../public/views/components/Feedback.jsx');
+
+var ss = require('../public/views/sc/s.jsx');
+var cc = require('../public/views/sc/CView.jsx');
 
 var routes = module.exports = (
     <Router.Route path='/' handler={App}>
-        <Router.DefaultRoute name='account' handler={Account} />
+        <Router.DefaultRoute handler={Main} />
+        <Router.Route path="users" handler={Users}/>
+	    <Router.Route path="prays" handler={Prays}/>
+	    <Router.Route path="userDetails" handler={UserDetails}/>
+	    <Router.Route path="feedback" handler={Feedback}/>
+	    <Router.Route path="cc" handler={cc}/>
+	    <Router.Route path="cc" handler={cc}/>
     </Router.Route>
 );
