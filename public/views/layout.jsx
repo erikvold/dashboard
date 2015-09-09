@@ -28,6 +28,8 @@ module.exports = React.createClass({
                     <title>
             {this.props.title}
                     </title>
+                    <link href="../../style/com.css" rel="stylesheet" />
+                    <link href="../../style/bootstrap.min.css" rel="stylesheet" />
                 </head>
                 <body>
           {this.props.children}

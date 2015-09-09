@@ -20,6 +20,11 @@
       }
   },
 
+  "databaseConfig": {
+      "host": "localhost:27017",
+      "database": "imooc"
+  },
+
   "middleware": {
     "static": {
       "module": {
