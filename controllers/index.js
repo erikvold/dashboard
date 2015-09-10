@@ -35,4 +35,9 @@ module.exports = function (router) {
         res.render(req.url, model);
     });
 
+    router.get('/login', function(req, res) {
+        console.log('/login:', req.url);
+        res.render(req.url, model);
+    });
+
 };

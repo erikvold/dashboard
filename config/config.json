@@ -25,6 +25,10 @@
       "database": "imooc"
   },
 
+  "bcrypt": {
+      "difficulty": 8
+  },
+  
   "middleware": {
     "static": {
       "module": {

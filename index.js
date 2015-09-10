@@ -18,7 +18,12 @@
 var express = require('express');
 var kraken = require('kraken-js');
 var nodeJSX = require('node-jsx');
-var db = require('./lib/database');
+var passport = require('passport');
+
+var db = require('./lib/database'),
+    auth = require('./lib/auth'),
+    userLib = require('./lib/user')(),
+    crypto = require('./lib/crypto');
 
 var options, app;
 
@@ -34,7 +39,12 @@ options = {
          */
 
         //configure mongodb 
-        db.config(config.get('databaseConfig'));
+        var dbConfig = config.get('databaseConfig'),
+            cryptConfig = config.get('bcrypt');
+            
+        crypto.setCryptLevel(cryptConfig.difficulty);
+        db.config(dbConfig);
+        userLib.addUsers();
 
         next(null, config);
     }
@@ -51,4 +61,14 @@ app.use(kraken(options));
 app.on('start', function () {
     console.log('Application ready to serve requests.');
     console.log('Environment: %s', app.kraken.get('env:env'));
+});
+
+app.on('middleware:after:session', function configPassport(eventargs) {
+    //Tell passport to use our newly created local strategy for authentication
+    passport.use(auth.localStrategy());
+    //Give passport a way to serialize and deserialize a user. In this case, by the user's id.
+    passport.serializeUser(userLib.serialize);
+    passport.deserializeUser(userLib.deserialize);
+    app.use(passport.initialize());
+    app.use(passport.session());
 });

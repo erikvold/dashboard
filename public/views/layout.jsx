@@ -17,7 +17,6 @@
 
 var React = require('react');
 var Navbar = require('./components/Navbar.jsx');
-var Sidebar = require('./components/Sidebar.jsx');
 
 module.exports = React.createClass({
 
@@ -38,14 +37,8 @@ module.exports = React.createClass({
                 <body>
 
                 <Navbar />
-                <div className="container-fluid">
-                  <div className="row">
-                    
-                     <Sidebar />
-                     {this.props.children}
-
-                  </div>
-                </div>
+                
+                {this.props.children}
 
                 </body>
                 <script src='/bundle.js'></script>

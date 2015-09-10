@@ -24,6 +24,7 @@ var Users = require('../public/views/components/Users.jsx');
 var Prays = require('../public/views/components/Prays.jsx');
 var UserDetails = require('../public/views/components/UserDetails.jsx');
 var Feedback = require('../public/views/components/Feedback.jsx');
+var Login = require('../public/views/components/Login.jsx');
 
 var ss = require('../public/views/sc/s.jsx');
 var cc = require('../public/views/sc/CView.jsx');
@@ -35,7 +36,10 @@ var routes = module.exports = (
 	    <Router.Route path="prays" handler={Prays}/>
 	    <Router.Route path="userDetails" handler={UserDetails}/>
 	    <Router.Route path="feedback" handler={Feedback}/>
+	    <Router.Route path="login" handler={Login}/>
+	    
 	    <Router.Route path="cc" handler={cc}/>
 	    <Router.Route path="cc" handler={cc}/>
     </Router.Route>
+
 );
